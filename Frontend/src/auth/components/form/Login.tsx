@@ -13,6 +13,7 @@ import * as Yup from 'yup'
 import { registerSchema } from '../../utils/validation'
 import { LoginFormValues } from '../../typescript/interface'
 import { useAuth } from '../../hooks/useAuth'
+import { FormikProps } from 'formik'
 
 const { userEmail, userPassword } = registerSchema.fields
 
@@ -82,7 +83,7 @@ export default function Login(): React.ReactElement {
 						values,
 						handleSubmit,
 						submitForm
-					}) => (
+					} : FormikProps<LoginFormValues> ) => (
 						<form className='space-y-6' onSubmit={handleSubmit}>
 							<div className='flex flex-col gap-[24px] w-full mt-[25px]'>
 								<div className='w-full'>

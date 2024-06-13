@@ -23,13 +23,13 @@ const CustomDay: React.FC<CustomDayProps> = props => {
 	const { clientProfessional } = useCalendar()
 	const isProfessional = decodedToken?.role === 'Professional'
 
-
 	// Determinar los slots a usar dependiendo del rol
 	const slotsToUse = isProfessional ? slots : clientProfessional?.data[0]?.slots
 
-
 	const isDayWithSlot = slotsToUse
-		? slotsToUse.some(slot => moment(slot.startDate).isSame(day, 'day'))
+		? slotsToUse.some((slot: { startDate: string }) =>
+			moment(slot.startDate).isSame(day, 'day')
+		)
 		: false
 
 	const isDayWithAppointment = appointments
@@ -47,7 +47,9 @@ const CustomDay: React.FC<CustomDayProps> = props => {
 			{...other}
 			day={day}
 			selected={selectedDay ? selectedDay.isSame(day, 'day') : false}
-			onMouseEnter={event => handlePointerEnter(event, day)}
+			onMouseEnter={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+				handlePointerEnter(event as React.PointerEvent<HTMLButtonElement>, day)
+			}
 			onMouseLeave={onPointerLeave}
 			style={{
 				...(isDayWithSlot || isDayWithAppointment

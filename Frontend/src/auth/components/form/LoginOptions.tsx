@@ -26,7 +26,7 @@ export default function LoginOptions(): React.ReactElement {
 					<div className='flex justify-center items-center w-full md:w-1/2'>
 						<img
 							className='w-full h-auto md:h-55 rounded-2xl object-cover'
-							src='/images/loginoptions-man-work.webp'
+							src='../../../../public/images/loginoptions-man-work.webp'
 							alt='Profesionales'
 						/>
 					</div>
@@ -54,7 +54,7 @@ export default function LoginOptions(): React.ReactElement {
 					<div className='flex justify-center items-center w-full md:w-1/2'>
 						<img
 							className='w-full h-auto md:h-55 rounded-2xl object-cover'
-							src='/images/loginoptions-screen-hand.webp'
+							src='../../../../public/images/loginoptions-screen-hand.webp'
 							alt='Clientes'
 						/>
 					</div>
