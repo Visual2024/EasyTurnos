@@ -3,14 +3,19 @@
 import { createContext, useState, useEffect, ReactNode } from 'react'
 import moment, { Moment } from 'moment'
 import Swal from 'sweetalert2'
+
 import { getAllSlots, deleteSlotById } from '../../services/api/slots'
+
 import { ConfigSlot, CalendarContextProps } from '../typescript/interface'
+
 import { useAuth } from '../../auth/hooks/useAuth'
 import { useProfessionalClients } from '../../professional/hooks/useProfessionalClients'
+
 import {
 	createAppointment, getProfessionalAppointments, deleteAppointment
 } from '../../services/api/appointment'
 import { useClientProfessional } from '../../client/hooks/useClientProfessional'
+
 
 // Creamos el contexto con un valor inicial vacío
 export const CalendarContext = createContext<CalendarContextProps | undefined>(

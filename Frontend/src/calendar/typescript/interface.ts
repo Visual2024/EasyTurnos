@@ -45,7 +45,10 @@ export interface CustomDayProps extends PickersDayProps<Moment> {
 	appointments: Appointment[]
 }
 
-export interface ClientsByProfessional {}
+export interface ClientsByProfessional_2 {
+	id: string
+	name: string
+}
 
 export interface CalendarContextProps {
 	selectedDate: Moment | null
@@ -65,7 +68,8 @@ export interface CalendarContextProps {
 	handleDeleteAppointment: (id: string) => void
 	setClientForAppointment: (clientId: string) => void
 	handleCreateClientAppointment: (title: string) => void
-	professionalClients: ClientsByProfessional | null
-	clientProfessional: ClientsByProfessional | null
+
+	professionalClients: ClientsByProfessional_2 | ClientsByProfessional | null
+	clientProfessional: ClientsByProfessional_2 | ClientsByProfessional | null
 	handleClientDeleteAppointment: any
 }

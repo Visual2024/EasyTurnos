@@ -1,5 +1,6 @@
 import { useContext } from 'react'
-import { CalendarContext, CalendarContextProps } from '../context/CalendarContext'
+import { CalendarContext } from '../context/CalendarContext'
+import { CalendarContextProps } from '../typescript/interface'
 
 export const useCalendar = (): CalendarContextProps => {
 	const context = useContext(CalendarContext)
