@@ -38,8 +38,8 @@ const CustomDay: React.FC<CustomDayProps> = props => {
 		)
 		: false
 
-	const handlePointerEnter: PointerEnterHandler = (event, day) => {
-		onPointerEnter(event, day)
+	const handlePointerEnter: PointerEnterHandler = (event) => {
+		onPointerEnter(event)
 	}
 
 	return (

@@ -4,7 +4,7 @@ import { createContext, useState, useEffect, ReactNode } from 'react'
 import moment, { Moment } from 'moment'
 import Swal from 'sweetalert2'
 import { getAllSlots, deleteSlotById } from '../../services/api/slots'
-import { ConfigSlot, CalendarContextProps, ClientsByProfessional } from '../typescript/interface'
+import { ConfigSlot, CalendarContextProps } from '../typescript/interface'
 import { useAuth } from '../../auth/hooks/useAuth'
 import { useProfessionalClients } from '../../professional/hooks/useProfessionalClients'
 import {

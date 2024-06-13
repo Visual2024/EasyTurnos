@@ -66,4 +66,6 @@ export interface CalendarContextProps {
 	setClientForAppointment: (clientId: string) => void
 	handleCreateClientAppointment: (title: string) => void
 	professionalClients: ClientsByProfessional | null
+	clientProfessional: ClientsByProfessional | null
+	handleClientDeleteAppointment: any
 }
