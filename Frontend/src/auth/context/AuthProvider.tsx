@@ -18,8 +18,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export default function AuthProvider({ children }: AuthProviderProps) {
 	const [user, setUser] = useState<UserLogged | null>(null)
-	const [professionalData, setProfessionalData] =
-		useState<ProfessionalData | null>(null)
+	const [professionalData, setProfessionalData] = useState<ProfessionalData | null>(null)
 	const [isSignIn, setIsSignIn] = useState<boolean>(false)
 	const [decodedToken, setDecodedToken] = useState<DecodedToken | null>(null)
 	const [error, setError] = useState<string | null>(null)
@@ -45,7 +44,8 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 				try {
 					decodedToken.role = 'Professional'
 					const response = await getProfessionalData(decodedToken)
-					setProfessionalData(response)
+					console.log(response)
+					setProfessionalData(response as ProfessionalData | null)
 					console.log('mis datos guardados:', professionalData)
 				} catch (error) {
 					console.error('Error fetching professional data:', error)

@@ -113,9 +113,7 @@ export async function getClientData(
 	}
 }
 
-export async function getProfessionalData(
-	decodedToken: DecodedToken
-): Promise<ApiResponseProfesional> {
+export async function getProfessionalData(decodedToken: DecodedToken): Promise<ApiResponseProfesional | null> {
 	try {
 		const token = localStorage.getItem('token')
 		if (!token) throw new Error('Token not found')

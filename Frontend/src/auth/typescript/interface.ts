@@ -8,7 +8,7 @@ export interface ModalProps {
 
 export interface AuthContextType {
   user: UserLogged | null
-  professionalData: ProfessionalData | null;
+  professionalData: ProfessionalData | null;  
   decodedToken: DecodedToken | null
   error: string | null
   isSignIn: boolean
