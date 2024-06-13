@@ -4,13 +4,11 @@ import { createContext, useState, useEffect, ReactNode } from 'react'
 import moment, { Moment } from 'moment'
 import Swal from 'sweetalert2'
 import { getAllSlots, deleteSlotById } from '../../services/api/slots'
-import { ConfigSlot, CalendarContextProps } from '../typescript/interface'
+import { ConfigSlot, CalendarContextProps, ClientsByProfessional } from '../typescript/interface'
 import { useAuth } from '../../auth/hooks/useAuth'
 import { useProfessionalClients } from '../../professional/hooks/useProfessionalClients'
 import {
-	createAppointment,
-	getProfessionalAppointments,
-	deleteAppointment
+	createAppointment, getProfessionalAppointments, deleteAppointment
 } from '../../services/api/appointment'
 import { useClientProfessional } from '../../client/hooks/useClientProfessional'
 
@@ -223,11 +221,15 @@ export const CalendarProvider = ({ children }: CalendarProviderProps) => {
 			)
 			if (deletedAppointment) {
 				const newSlot = {
+
 					id: deletedAppointment.slotId,
 					startDate: deletedAppointment.startDate,
-					endDate: deletedAppointment.endDate
+					endDate: deletedAppointment.endDate,
+					end: deletedAppointment.endDate
 				}
 				setSlots(prevSlots => [...prevSlots, newSlot])
+
+
 			}
 		} catch (error) {
 			console.error(`Error deleting appointment with ID ${id}:`, error)
@@ -259,7 +261,8 @@ export const CalendarProvider = ({ children }: CalendarProviderProps) => {
 				const newSlot = {
 					id: deletedAppointment.slotId,
 					startDate: deletedAppointment.startDate,
-					endDate: deletedAppointment.endDate
+					endDate: deletedAppointment.endDate,
+					end: deletedAppointment.endDate
 				}
 				setSlots(prevSlots => [...prevSlots, newSlot])
 			}
@@ -272,6 +275,7 @@ export const CalendarProvider = ({ children }: CalendarProviderProps) => {
 			})
 		}
 	}
+
 
 	const contextValue: CalendarContextProps = {
 		selectedDate,

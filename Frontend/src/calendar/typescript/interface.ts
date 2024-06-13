@@ -2,16 +2,19 @@
 import { PickersDayProps } from '@mui/x-date-pickers/PickersDay'
 import { Moment } from 'moment'
 
+type CustomPointerEnterHandler = (
+	event: React.PointerEvent<HTMLButtonElement>,
+	day: Moment
+) => void
+
 export interface CustomDayProps extends PickersDayProps<Moment> {
 	selectedDay: Moment | null
 	hoveredDay: Moment | null
-	onPointerEnter: (
-		event: React.PointerEvent<HTMLButtonElement>,
-		day: Moment
-	) => void
-	onPointerLeave: () => void
+	onPointerEnter: React.PointerEventHandler<HTMLButtonElement>
+	onPointerLeave: React.PointerEventHandler<HTMLButtonElement>
 	slots: ConfigSlot[]
 	appointments: Appointment[]
+	onCustomPointerEnter?: CustomPointerEnterHandler
 }
 
 export interface ConfigSlot {
@@ -36,17 +39,13 @@ export type PointerEnterHandler = (
 export interface CustomDayProps extends PickersDayProps<Moment> {
 	selectedDay: Moment | null
 	hoveredDay: Moment | null
-	onPointerEnter: PointerEnterHandler
-	onPointerLeave: () => void
+	onPointerEnter: React.PointerEventHandler<HTMLButtonElement>
+	onPointerLeave: React.PointerEventHandler<HTMLButtonElement>
 	slots: ConfigSlot[]
 	appointments: Appointment[]
 }
 
-export interface ClientsByProfessional {
-	id: string
-	name: string
-	// Otros campos necesarios
-}
+export interface ClientsByProfessional {}
 
 export interface CalendarContextProps {
 	selectedDate: Moment | null
@@ -56,15 +55,15 @@ export interface CalendarContextProps {
 	selectedSlots: ConfigSlot[]
 	selectedSlot: ConfigSlot | null
 	showConfirmButton: boolean
-	appointmentsForSelectedDate: any[] // Define el tipo correcto de appointmentsForSelectedDate
+	appointmentsForSelectedDate: any[]
 	handleDateChange: (date: Moment | null) => void
 	handleConfigChange: (newSlots: ConfigSlot[]) => void
 	handleSlotClick: (slot: ConfigSlot) => void
 	handleDeleteSlot: (id: string) => void
 	handleCreateAppointment: (clientId: string, title: string) => void
-	appointments: any[] // Define el tipo correcto de appointments
+	appointments: any[]
 	handleDeleteAppointment: (id: string) => void
 	setClientForAppointment: (clientId: string) => void
 	handleCreateClientAppointment: (title: string) => void
-	professionalClients: ClientsByProfessional | null;
+	professionalClients: ClientsByProfessional | null
 }
