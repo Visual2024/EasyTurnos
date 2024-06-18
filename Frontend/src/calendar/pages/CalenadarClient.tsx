@@ -9,6 +9,7 @@ import '../styles/calendar.css'
 import CustomDay from '../components/CustomDay'
 import { useCalendar } from '../hook/useCalendar'
 import clsx from 'clsx'
+import { ConfigSlot } from '../typescript/interface'
 
 const CalendarClient: React.FC = () => {
 	const {
@@ -25,9 +26,16 @@ const CalendarClient: React.FC = () => {
 	} = useCalendar()
 	const [tabIndex, setTabIndex] = useState(0)
 	const [selectedSlotForConfirmation, setSelectedSlotForConfirmation] =
-		useState<any | null>(null)
+		useState<ConfigSlot | null>(null)
 
-	const handleSlotClickWrapper = (slot: any) => {
+	interface Slot {
+		startDate: Date;
+		endDate: Date;
+		end: Date;
+		id: string;
+	}
+
+	const handleSlotClickWrapper = (slot: Slot) => {
 		handleSlotClick(slot)
 		setSelectedSlotForConfirmation(slot)
 	}
